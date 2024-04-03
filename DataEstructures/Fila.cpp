@@ -64,6 +64,32 @@ void enQueue(Queue* const queue, int iValue)
     }
 }
 
+
+void deQueue(Queue* const queue)
+{
+    // verifica se o primeiro da fila é nulo 
+    if(queue->front == nullptr)
+    {
+        cout << "Vazia" << endl;
+        return;
+    }
+    
+    Node* temp = queue->front;
+    
+    queue->front = queue->front->next;
+    
+    if(queue->front == nullptr)
+    {
+        queue->rear = nullptr;
+    }
+    
+    // apaga o antigo primeiro da fila para liberar memoria
+    free(temp);
+    
+    return;
+}
+
+
 void showFirstElement(Queue* const queue)
 {
     cout << "Primeiro Elemento: " << ((queue->front != NULL) ? (queue->front)->iData : -1) << endl;
@@ -106,12 +132,18 @@ int main()
     showLastElement(queue);
     cout << "---" <<endl;
     showElements(queue);
+    cout << "---" <<endl;
+    deQueue(queue);
+    showElements(queue);
     cout<<"===========================" << endl;
     
     enQueue(queue,0);
     showFirstElement(queue);
     showLastElement(queue);
     cout << "---" <<endl;
+    showElements(queue);
+    cout << "---" <<endl;
+    deQueue(queue);
     showElements(queue);
     cout<<"===========================" << endl;
     
@@ -123,8 +155,10 @@ int main()
     showLastElement(queue);
     cout << "---" <<endl;
     showElements(queue);
+    cout << "---" <<endl;
+    deQueue(queue);
+    showElements(queue);
     cout<<"===========================" << endl;
 
     return 0;
 }
-
