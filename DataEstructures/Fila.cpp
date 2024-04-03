@@ -39,7 +39,7 @@ Queue* newQueue()
 Node* newNode(int iValue)
 {
  
-    Node* temp = (Node*) malloc(sizeof(Queue));
+    Node* temp = (Node*) malloc(sizeof(Node));
     temp->iData = iValue;
     temp->next = nullptr;
     
