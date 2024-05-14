@@ -92,22 +92,3 @@ int& trocaElemento(int iElemento, int arriVetor[])
 {
     return arriVetor[iElemento];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

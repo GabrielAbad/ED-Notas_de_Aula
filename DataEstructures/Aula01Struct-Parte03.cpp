@@ -58,7 +58,9 @@ int main()
     adicionarLivros(biblioteca, livro3);
     
     listarLivros(biblioteca);
+    cout << "================" << endl;
 
+    cout << sizeof(biblioteca.livros);
     return 0;
 }
 
@@ -80,37 +82,10 @@ void listarLivros(Biblioteca biblioteca)
 // Dever de casa: verificar se a biblioteca está cheia
 void adicionarLivros(Biblioteca& biblioteca,Livro novoLivro)
 {
+    if(biblioteca.iTamAcervo == 1000)
+    {
+        cout << "Biblioteca está cheia" << endl;
+    }
     biblioteca.livros[biblioteca.iTamAcervo] = novoLivro;
     biblioteca.iTamAcervo+=1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

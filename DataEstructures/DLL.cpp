@@ -25,6 +25,7 @@ void deleteNode(Node**, Node*);
 void insertBefore(Node**, Node*, int);
 Node* searchNodebyValue(Node**, int);
 void deleteNodebyValue(Node**, int);
+void swapNodeWithNext(Node**, Node*);
 
 int main()
 {
@@ -226,4 +227,44 @@ void deleteNodebyValue(Node** head, int iPayload)
 {
     Node* temp = searchNodebyValue(head,iPayload);
     deleteNode(head,temp);
+}
+
+
+void swapNodeWithNext(Node** head, Node* x)
+{
+    Node* next = x->ptrNext;
+    if(next == nullptr)
+    {
+        cout << "swapNodeWithNext: Nao existe proximo elemento" << endl;
+        return;
+    }
+    
+    Node* prev = x->ptrPrev;
+
+    // padrao para qualquer nó existente da lista que não seja o último
+    x->ptrNext = next->ptrNext;
+    x->ptrPrev = next;
+    
+    // se nao for o penultimo
+    if(next->ptrNext != nullptr)
+    {
+        x->ptrNext->ptrPrev = x;
+    }
+    
+    next->ptrNext = x;
+    next->ptrPrev = prev;
+
+    // se nao for o primeiro
+    if(prev != nullptr)
+    {
+        next->ptrPrev->ptrNext = next;
+    }   
+
+    // se o primeiro da lista vai ser o trocado
+    if(*head == x)
+    {
+        *head = next;
+    }
+    
+    return;
 }

@@ -6,14 +6,16 @@ using std::string;
 
 //UDT - user defined types: pilhas, listas, filas
 
-int main()
-{
-    struct
+struct
     {
         // essa struct tem 2 mebros de dados
         int iIdade;
         string strNome;
     } alunoEMAp; // criando um tipo novo e anônimo
+
+int main()
+{
+    
     
     alunoEMAp.iIdade = 18;
     alunoEMAp.strNome = "Ana";

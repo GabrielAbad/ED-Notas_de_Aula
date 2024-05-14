@@ -6,9 +6,9 @@ using std::endl;
 
 void anoOcorrido(int iAnosAtras)
 {
-   if(iAnosAtras>2024)
+   if(iAnosAtras>=2024)
    {
-	cout << -(2024-iAnosAtras) << " A.C." << endl;
+	cout << -(2024-iAnosAtras)+1 << " A.C." << endl;
    }
    else
    {
@@ -16,7 +16,7 @@ void anoOcorrido(int iAnosAtras)
    }
 }
 
-int Fact(int n)
+long long int Fact(int n)
 {
     if(n==1)
     {

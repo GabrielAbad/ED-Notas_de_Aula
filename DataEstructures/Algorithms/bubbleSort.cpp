@@ -17,6 +17,8 @@ void optimizedBubbleSort(int[], int);
 
 int main()
 {
+    cout << "===================================" << endl;
+    cout << "-- Bubble Sort Ruim --" << endl;
     int arriNumbers[] = {42, 7, 0, 3, 666, 1, 111, 10, 13};
     int iArraySize = sizeof(arriNumbers)/sizeof(arriNumbers[0]);
     cout << "Arrayy original: ";
@@ -34,26 +36,23 @@ int main()
     cout << timeDuration.count() << " nanosegundos" << endl;
     
     cout << "===================================" << endl;
-    cout << "===================================" << endl;
-    
+    cout << "--Optimized Bubble Sort--" << endl;
     int arriNumbers_2[] = {42, 7, 0, 3, 666, 1, 111, 10, 13};
     int iArraySize_2 = sizeof(arriNumbers)/sizeof(arriNumbers[0]);
     cout << "Array 2 original: ";
     printArray(arriNumbers_2, iArraySize_2);
     
     timeStart = high_resolution_clock::now();
-    bubbleSortRuim(arriNumbers, iArraySize);
+    optimizedBubbleSort(arriNumbers_2, iArraySize_2);
     timeStop = high_resolution_clock::now();
     
     cout << "Array 2 ordenado: ";
     printArray(arriNumbers_2, iArraySize_2);
     
-    auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+    timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
     cout << "Tempo utilizado: " << endl;
     cout << timeDuration.count() << " nanosegundos" << endl;
-    
-    
-    
+     
     return 0;
 }
 
@@ -110,7 +109,6 @@ void optimizedBubbleSort(int arriNumbers[], int iLength)
                 bUnordered = true;
             }
         }
-        
         if(bUnordered == false) break;
     }
 }
