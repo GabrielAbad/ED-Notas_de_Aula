@@ -13,6 +13,7 @@ typedef struct Node
 Node* createNode(int);
 Node* insertNode(Node*, int);
 void bfsTraversal(Node*);
+int treeHeight(Node*);
 
 int main()
 {
@@ -27,6 +28,9 @@ int main()
     
     cout << "BFS Traversal: ";
     bfsTraversal(root);
+    cout << endl;
+    
+    cout << "Tree Height: " << treeHeight(root);
     cout << endl;
     
     return 0;
@@ -75,10 +79,48 @@ void bfsTraversal(Node* startingNode)
 {
     if(startingNode == nullptr) return;
     
+    // Parte 1 do Trabalho: Alterar para lista encadeada
     Node* nodeQueue[100];
     int iQueueFront = 0;
     int iQueueRear = 0;
     
     nodeQueue[iQueueRear] = startingNode;
     iQueueRear++;
+    
+    while(iQueueFront < iQueueRear)
+    {
+        Node* currentNode = nodeQueue[iQueueFront];
+        iQueueFront++;
+        
+        cout<<currentNode->iPayload<<" ";
+        
+        if(currentNode->ptrLeft != nullptr)
+        {
+            nodeQueue[iQueueRear] = currentNode->ptrLeft;
+            iQueueRear++;
+        }
+        if(currentNode->ptrRight != nullptr)
+        {
+            nodeQueue[iQueueRear] = currentNode->ptrRight;
+            iQueueRear++;
+        }
+    }
+}
+
+// Parte 2 do Trabalho: Elaborar busca utilizando BFS (já possuimos o DFS)
+// PArte 3 do Trabalho: Monitorar o desempenho de busca em arvore utilizando DFS e BFS
+// Parte 4 do trabalho: Monitorar o desempenho de criação de listas
+// Parte 5 do trabalho: Monitorar o desempenho de criação de arvores
+
+
+int treeHeight(Node* startingNode)
+{
+    if(startingNode == nullptr) return 0;
+    else
+    {
+        int iLeftHeight = treeHeight(startingNode->ptrLeft);
+        int iRightHeight = treeHeight(startingNode->ptrRight);
+        
+        return max(iLeftHeight,iRightHeight) + 1;
+    }
 }
